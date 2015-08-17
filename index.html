@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+	<title>Food</title>
+	<script>
+		/*recipe = [
+			{
+				"Pimm's No. 1":73,
+				"Ginger Ale":196,
+				"Water":130,
+				"Cucumber":19,
+				"Lemon":19
+			}
+		];
+		*/
+		
+		var recipe = [
+//			{
+//				"Bake Eggplant":500,
+//				"Mince Garlic":null
+//			},
+			{
+				"Eggplant":454,
+				"Lemon Juice": 59,
+				"Extra Virgin Olive Oil":59,
+				"Garlic":2.46,
+				"Salt":1,
+				"Pepper":1,
+				"Tahini":79
+			}
+		];
+	</script>
+	<style>
+		*{
+			font-size:30pt;
+			box-sizing:border-box;
+		}
+		input{
+			width:50%;
+			font-family:"VistaSans";
+			font-weight:800;
+			text-align:right;
+			border:0;
+			background-color:#afefee;
+			border-radius:8px;
+			padding:8px 20px;
+		}
+		label{
+			font-family:"VistaSans";
+			font-weight:200;
+			padding-left:1em;
+			color:#227878;
+			font-style:italic;
+		}
+		hr{
+			margin:0.5em;
+			border:0;
+		}
+	</style>
+</head>
+<body>
+
+<script>
+var i=0;
+
+// make UI for each ingredient
+var ui = [];
+var total = 0;
+for(key in recipe[0]){
+	ui.push('<input type="number" value="',recipe[0][key],'" data-original="',recipe[0][key],'" />');
+	ui.push('<label>',key,'</label>');
+	ui.push('<hr>');
+	total += recipe[0][key];
+}
+
+ui.push('<input type="number" value="',total,'" data-original="',total,'" />');
+ui.push('<label>Total</label>');
+
+document.write(ui.join(''));
+
+// bind event handlers
+function update(changed){
+	var scalar = changed.value / changed.dataset.original;
+	for(i=0; i<elementList.length; i++){
+		var value = Math.round(elementList[i].dataset.original * scalar);
+		if(elementList[i] !== changed){
+			elementList[i].value = value;
+		}
+	}
+}
+
+var elementList = document.querySelectorAll('input');
+for(i=0; i<elementList.length; i++){
+	elementList[i].oninput = function(){
+		update(this);
+	}
+}
+
+</script>
+
+</body>
+</html>
