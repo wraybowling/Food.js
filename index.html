@@ -67,7 +67,7 @@ var i=0;
 var ui = [];
 var total = 0;
 for(key in recipe[0]){
-	ui.push('<input type="number" value="',recipe[0][key],'" data-original="',recipe[0][key],'" />');
+	ui.push('<input type="number" inputmode="numeric" pattern="[0-9]*" min="0" value="',recipe[0][key],'" data-original="',recipe[0][key],'" />');
 	ui.push('<label>',key,'</label>');
 	ui.push('<hr>');
 	total += recipe[0][key];
