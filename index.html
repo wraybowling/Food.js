@@ -23,22 +23,25 @@
 				"Eggplant":454,
 				"Lemon Juice": 59,
 				"Extra Virgin Olive Oil":59,
-				"Garlic":2.46,
+				"Tahini":59,
+				"Garlic":3,
 				"Salt":1,
-				"Pepper":1,
-				"Tahini":79
+				"Pepper":1
 			}
 		];
 	</script>
+	<link href='https://fonts.googleapis.com/css?family=PT+Serif:400italic,700' rel='stylesheet' type='text/css'>
 	<style>
 		*{
-			font-size:30pt;
 			box-sizing:border-box;
+			font-size:6vw;
+		}
+		body{
+			font-family:"PT Serif",serif;
 		}
 		input{
-			width:50%;
-			font-family:"VistaSans";
-			font-weight:800;
+			width:33%;
+			font-weight:700;
 			text-align:right;
 			border:0;
 			background-color:#afefee;
@@ -46,9 +49,8 @@
 			padding:8px 20px;
 		}
 		label{
-			font-family:"VistaSans";
-			font-weight:200;
-			padding-left:1em;
+			font-weight:400;
+			padding-left:0.5em;
 			color:#227878;
 			font-style:italic;
 		}
@@ -82,8 +84,12 @@ document.write(ui.join(''));
 function update(changed){
 	var scalar = changed.value / changed.dataset.original;
 	for(i=0; i<elementList.length; i++){
-		var value = Math.round(elementList[i].dataset.original * scalar);
 		if(elementList[i] !== changed){
+			var value = elementList[i].dataset.original * scalar;
+			if(value < 1)
+				value = value.toPrecision(1);
+			else
+				value = Math.round(value);
 			elementList[i].value = value;
 		}
 	}
