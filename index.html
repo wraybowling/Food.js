@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<script>
 		var recipes = {
-			"Baba Ghanoush": {
+			"Baba Ghanoush":{
 				"Baked Eggplant":454,
 				"Lemon Juice": 59,
 				"Extra Virgin Olive Oil":59,
@@ -60,8 +60,9 @@
 			color:#46332c;
 		}
 		a{
-			text-decoration:none;
 			padding:0 0.25em;
+			text-decoration:none;
+			border-radius:0.2em;
 		}
 		a:hover, a:active{
 			color:white;
@@ -69,7 +70,6 @@
 		}
 		.logo{
 			border:solid 1px #46332c;
-			border-radius:0.2em;
 		}
 	</style>
 </head>
@@ -88,13 +88,31 @@ function renderMenu(){
 	recipeName_el.innerHTML = '';
 	var ui = ['<ul>'];
 	for(key in recipes){
-		ui.push('<li><a href="javascript:renderRecipe(\''+key.replace('\'','\\\'')+'\')">'+key+'</a></li>');
+		ui.push('<li><a href="javascript:renderRecipe(\''+escape(key)+'\')">'+key+'</a></li>');
 	}
 	ui.push('</ul>')
 	content_el.innerHTML = ui.join('');
 }
 
+var elementList = [];
+	
+function update(changed){
+	var scalar = changed.value / changed.dataset.original;
+	for(i=0; i<elementList.length; i++){
+		if(elementList[i] !== changed){
+			var value = elementList[i].dataset.original * scalar;
+			if(value < 1)
+				value = value.toPrecision(1);
+			else
+				value = Math.round(value);
+			elementList[i].value = value;
+		}
+	}
+}
+	
 function renderRecipe(recipe){
+	recipe = unescape(recipe);
+	
 	if(recipes[recipe] === undefined){
 		renderMenu();
 		return;
@@ -117,37 +135,22 @@ function renderRecipe(recipe){
 	ui.push('<label>Total</label>');
 
 	content_el.innerHTML = ui.join('');
-/*
-	// bind event handlers
-	function update(changed){
-		var scalar = changed.value / changed.dataset.original;
-		for(i=0; i<elementList.length; i++){
-			if(elementList[i] !== changed){
-				var value = elementList[i].dataset.original * scalar;
-				if(value < 1)
-					value = value.toPrecision(1);
-				else
-					value = Math.round(value);
-				elementList[i].value = value;
-			}
-		}
-	}
 
-	var elementList = document.querySelectorAll('input');
+	// bind event handlers
+	
+	elementList = document.querySelectorAll('input');
 	for(i=0; i<elementList.length; i++){
 		elementList[i].oninput = function(){
 			update(this);
 		}
 	}
-*/
 }
+
 if(location.hash === undefined){
 	renderMenu();
 }else{
-	console.log('hash',location.hash);
-	renderRecipe(location.hash.replace('#',''));
+	renderRecipe(unescape(location.hash.replace('#','')));
 }
-
 
 </script>
 
