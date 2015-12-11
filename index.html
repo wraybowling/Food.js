@@ -85,7 +85,7 @@
 var content_el = document.getElementById('content');
 var recipeName_el = document.getElementById('recipeName');
 function renderMenu(){
-	recipeName_el.innerText = '';
+	recipeName_el.innerHTML = '';
 	var ui = ['<ul>'];
 	for(key in recipes){
 		ui.push('<li><a href="javascript:renderRecipe(\''+key.replace('\'','\\\'')+'\')">'+key+'</a></li>');
@@ -100,7 +100,7 @@ function renderRecipe(recipe){
 		return;
 	}
 	
-	recipeName_el.innerText = recipe;
+	recipeName_el.innerHTML = recipe;
 	location.hash = recipe;
 
 	// make UI for each ingredient
