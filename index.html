@@ -1,34 +1,27 @@
 <!doctype html>
 <html>
 <head>
-	<title>Food</title>
+	<title>Food.js</title>
+	<meta charset="utf-8">
 	<script>
-		/*recipe = [
-			{
-				"Pimm's No. 1":73,
-				"Ginger Ale":196,
-				"Water":130,
-				"Cucumber":19,
-				"Lemon":19
-			}
-		];
-		*/
-		
-		var recipe = [
-//			{
-//				"Bake Eggplant":500,
-//				"Mince Garlic":null
-//			},
-			{
-				"Eggplant":454,
+		var recipes = {
+			"Baba Ghanoush": {
+				"Baked Eggplant":454,
 				"Lemon Juice": 59,
 				"Extra Virgin Olive Oil":59,
 				"Tahini":59,
 				"Garlic":3,
 				"Salt":1,
 				"Pepper":1
+			},
+			"Pimm's Cup":{
+				"Pimm's No. 1":73,
+				"Ginger Ale":196,
+				"Water":130,
+				"Cucumber":19,
+				"Lemon":19
 			}
-		];
+		};
 	</script>
 	<link href='https://fonts.googleapis.com/css?family=PT+Serif:400italic,700' rel='stylesheet' type='text/css'>
 	<style>
@@ -37,6 +30,7 @@
 			font-size:6vw;
 		}
 		body{
+			background-color:#f7f1e6;
 			font-family:"PT Serif",serif;
 		}
 		input{
@@ -58,49 +52,102 @@
 			margin:0.5em;
 			border:0;
 		}
+		ul{
+			margin-left:1em;
+			list-style:circle;
+		}
+		h1,a{
+			color:#46332c;
+		}
+		a{
+			text-decoration:none;
+			padding:0 0.25em;
+		}
+		a:hover, a:active{
+			color:white;
+			background-color:#46332c;
+		}
+		.logo{
+			border:solid 1px #46332c;
+			border-radius:0.2em;
+		}
 	</style>
 </head>
 <body>
 
+<h1>
+	<a class="logo" href="javascript:renderMenu()">Food.js</a>
+	<span id="recipeName"></span>
+</h1>
+<div id="content"></div>
+	
 <script>
-var i=0;
-
-// make UI for each ingredient
-var ui = [];
-var total = 0;
-for(key in recipe[0]){
-	ui.push('<input type="number" inputmode="numeric" pattern="[0-9]*" min="0" value="',recipe[0][key],'" data-original="',recipe[0][key],'" />');
-	ui.push('<label>',key,'</label>');
-	ui.push('<hr>');
-	total += recipe[0][key];
+var content_el = document.getElementById('content');
+var recipeName_el = document.getElementById('recipeName');
+function renderMenu(){
+	recipeName_el.innerText = '';
+	var ui = ['<ul>'];
+	for(key in recipes){
+		ui.push('<li><a href="javascript:renderRecipe(\''+key.replace('\'','\\\'')+'\')">'+key+'</a></li>');
+	}
+	ui.push('</ul>')
+	content_el.innerHTML = ui.join('');
 }
 
-ui.push('<input type="number" value="',total,'" data-original="',total,'" />');
-ui.push('<label>Total</label>');
+function renderRecipe(recipe){
+	if(recipes[recipe] === undefined){
+		renderMenu();
+		return;
+	}
+	
+	recipeName_el.innerText = recipe;
+	location.hash = recipe;
 
-document.write(ui.join(''));
+	// make UI for each ingredient
+	var ui = [];
+	var total = 0;
+	for(ingredient in recipes[recipe]){
+		ui.push('<input type="number" inputmode="numeric" pattern="[0-9]*" min="0" value="',recipes[recipe][ingredient],'" data-original="',recipes[recipe][ingredient],'" />');
+		ui.push('<label>',ingredient,'</label>');
+		ui.push('<hr>');
+		total += recipes[recipe][ingredient];
+	}
 
-// bind event handlers
-function update(changed){
-	var scalar = changed.value / changed.dataset.original;
-	for(i=0; i<elementList.length; i++){
-		if(elementList[i] !== changed){
-			var value = elementList[i].dataset.original * scalar;
-			if(value < 1)
-				value = value.toPrecision(1);
-			else
-				value = Math.round(value);
-			elementList[i].value = value;
+	ui.push('<input type="number" value="',total,'" data-original="',total,'" />');
+	ui.push('<label>Total</label>');
+
+	content_el.innerHTML = ui.join('');
+/*
+	// bind event handlers
+	function update(changed){
+		var scalar = changed.value / changed.dataset.original;
+		for(i=0; i<elementList.length; i++){
+			if(elementList[i] !== changed){
+				var value = elementList[i].dataset.original * scalar;
+				if(value < 1)
+					value = value.toPrecision(1);
+				else
+					value = Math.round(value);
+				elementList[i].value = value;
+			}
 		}
 	}
+
+	var elementList = document.querySelectorAll('input');
+	for(i=0; i<elementList.length; i++){
+		elementList[i].oninput = function(){
+			update(this);
+		}
+	}
+*/
+}
+if(location.hash === undefined){
+	renderMenu();
+}else{
+	console.log('hash',location.hash);
+	renderRecipe(location.hash.replace('#',''));
 }
 
-var elementList = document.querySelectorAll('input');
-for(i=0; i<elementList.length; i++){
-	elementList[i].oninput = function(){
-		update(this);
-	}
-}
 
 </script>
 
