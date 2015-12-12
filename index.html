@@ -118,6 +118,7 @@ var content_el = document.getElementById('content');
 var recipeName_el = document.getElementById('recipeName');
 function renderMenu(){
 	recipeName_el.innerHTML = '';
+	location.hash = '';
 	var ui = ['<ul>'];
 	for(key in recipes){
 		ui.push('<li><a href="javascript:renderRecipe(\''+escape(key)+'\')">'+key+'</a></li>');
