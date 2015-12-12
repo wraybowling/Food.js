@@ -3,7 +3,7 @@
 # Food.js
 ## raw cooking data, and tools to read it
 
-http://wraybowling.github.io/Food.json/
+http://wraybowling.github.io/Food.js/
 
 In countries where the metric system is employed, cooking involves fewer headaches and more accurate outcomes. Following recipies feels less like guess-work. This has less to do with the metric unit system itself, and more to do with the introduction of electronic food scales. It turns out that "feeling out" the difference between 100g of something and 110g in the United States customary system is... customarily ignored! We don't actually pay attention to a few extra ounces when we cook. But with metric, you can. With a scale you can.
 

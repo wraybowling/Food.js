@@ -157,7 +157,7 @@ function renderRecipe(recipe){
 		total += recipes[recipe][ingredient];
 	}
 
-	ui.push('<input type="number" value="',total,'" data-original="',total,'" />');
+	ui.push('<input type="number" inputmode="numeric" pattern="[0-9]*" min="0" value="',total,'" data-original="',total,'" />');
 	ui.push('<label>Total</label>');
 
 	content_el.innerHTML = ui.join('');
