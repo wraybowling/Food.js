@@ -16,12 +16,12 @@
 			"Invention":{
 				"Perspiration":93,
 				"Electricity":6,
-				"Evaopration":4,
+				"Evaporation":4,
 				"Butterscotch Ripple":2
 			},
 			"Baba Ghanoush":{
 				"Baked Eggplant":454,
-				"Lemon Juice": 59,
+				"Lemon Juice":59,
 				"Extra Virgin Olive Oil":59,
 				"Tahini":59,
 				"Garlic":3,
@@ -122,7 +122,7 @@ function renderMenu(){
 	location.hash = '';
 	var ui = ['<ul>'];
 	for(key in recipes){
-		ui.push('<li><a href="javascript:renderRecipe(\''+escape(key)+'\')">'+key+'</a></li>');
+		ui.push('<li><a href="javascript:renderRecipe(\''+escape(key.replace('\'','\\\''))+'\')">'+key+'</a></li>');
 	}
 	ui.push('</ul>')
 	content_el.innerHTML = ui.join('');
@@ -145,6 +145,7 @@ function update(changed){
 }
 	
 function renderRecipe(recipe){
+	location.hash = recipe;
 	recipe = unescape(recipe);
 	
 	if(recipes[recipe] === undefined){
@@ -153,7 +154,6 @@ function renderRecipe(recipe){
 	}
 	
 	recipeName_el.innerHTML = recipe;
-	location.hash = recipe;
 
 	// make UI for each ingredient
 	var ui = [];
