@@ -16,30 +16,42 @@
 			"Invention":{
 				"Perspiration":93,
 				"Electricity":6,
-				"Evaopration":4,
+				"Evaporation":4,
 				"Butterscotch Ripple":2
 			},
 			"Baba Ghanoush":{
 				"Baked Eggplant":454,
-				"Lemon Juice": 59,
+				"Lemon Juice":59,
 				"Extra Virgin Olive Oil":59,
 				"Tahini":59,
 				"Garlic":3,
 				"Salt":1,
 				"Pepper":1
 			},
+			"Cheese Biscuit Cookies":{
+				"Margarine":227,
+				"Sharp Cheddar Cheese":227,
+				"Unsifted Flour":283,
+				"Red Pepper Flakes":1.5,
+				"Salt":1.5
+				// bake 12 minutes @ 375
+			},
+			"Coffee":{
+				"Grounds":22,
+				"Water":355
+			},
 			"Cole Slaw":{
-				"Cabbage":100,
-				"Carrots":30,
-				"Red Onion":30,
-				"Mayonaise":5,
-				"Dijon Mustard":5,
-				"Dill Pickle":10,
-				"Pickle Brine":10,
-				"Dill":1,
+				"Cabbage":250,
+				"Carrots":65,
+				"Red Onion":100,
+				"Mayonaise":45,
+				"Dijon Mustard":20,
+				"Dill Pickle":45,
+				"Pickle Brine":35,
 				"Honey":2,
-				"Salt":1,
-				"Pepper":1,
+				"Dill":0.2,
+				"Salt":0.2,
+				"Pepper":0.2,
 			},
 			"Cranberry Sauce":{
 				"Cranberries":250,
@@ -72,16 +84,17 @@
 		}
 		body{
 			background-color:#f7f1e6;
-			font-family:"PT Serif",serif;
+			font-family:"PT Serif", Trebuchet MS, Trebuchet, serif;
 		}
 		input{
-			width:33%;
+			width:30%;
 			font-weight:700;
+			font-size:150%;
 			text-align:right;
 			border:0;
 			background-color:#afefee;
-			border-radius:8px;
-			padding:8px 20px;
+			border-radius:0.1em;
+			padding:0 0.1em;
 		}
 		label{
 			font-weight:400;
@@ -130,7 +143,7 @@ function renderMenu(){
 	location.hash = '';
 	var ui = ['<ul>'];
 	for(key in recipes){
-		ui.push('<li><a href="javascript:renderRecipe(\''+escape(key)+'\')">'+key+'</a></li>');
+		ui.push('<li><a href="javascript:renderRecipe(\''+escape(key.replace('\'','\\\''))+'\')">'+key+'</a></li>');
 	}
 	ui.push('</ul>')
 	content_el.innerHTML = ui.join('');
@@ -153,6 +166,7 @@ function update(changed){
 }
 	
 function renderRecipe(recipe){
+	location.hash = recipe;
 	recipe = unescape(recipe);
 	
 	if(recipes[recipe] === undefined){
@@ -161,7 +175,6 @@ function renderRecipe(recipe){
 	}
 	
 	recipeName_el.innerHTML = recipe;
-	location.hash = recipe;
 
 	// make UI for each ingredient
 	var ui = [];
