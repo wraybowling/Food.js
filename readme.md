@@ -23,7 +23,7 @@ Start here: http://wraybowling.github.io/Food.js/
  2. Put that value in the Total field
  5. All other values are updated!
 
-### Example Scenario 3: You want to make a perfect cocktail
+### Example Scenario 3: You want to make a perfect cocktail ([How this all got started!](https://vine.co/v/eZaqYpDBW1j/))
 
  1. Write a piece of software to balance proportions (Food.js)
  2. Create a JavaScript object with
@@ -36,15 +36,15 @@ Start here: http://wraybowling.github.io/Food.js/
  4. Put the glass's volume in the Total field
  5. All other values are updated!
 
-<iframe src="https://vine.co/v/eZaqYpDBW1j/embed/simple" width="300" height="300" frameborder="0"></iframe>
+<iframe src="embed/simple" width="300" height="300" frameborder="0"></iframe>
 
 ## Philosophies
 
-### Mass Measurements
-In countries where the metric system is employed, cooking involves fewer headaches and more accurate outcomes. Many cite baking, since flour by weight is more accurate. But there are other reasons why metric is better. Namely, recipes involve less guessing and arithmetic. Metric's simplicity is only one half of the equation. All of the recipes are in grams, but so long as you're going by weight, you can really use any unit you like. Grams are just the easiest to read without fiddling with base 12.
-
 ### You Need A Food Scale
 In most kitchens, many ingredients are added to taste after a recipe has been followed. The reason for this is because we don't actually pay attention to a few extra teaspoons when we cook. But with metric, you can. With a scale you can. Because the metric system on a food scale has a much higher resolution, you don't have to think of it as "european." Think of it, rather, as Digital HD Ingredient Measuring.
+
+### Mass Measurements
+In countries where the metric system is employed, cooking involves fewer headaches and more accurate outcomes. Many cite baking, since flour by weight is more accurate. But there are other reasons why metric is better. Namely, recipes involve less guessing and arithmetic. All of the recipes are in grams, but so long as you're going by weight, you can really use any unit you like. Grams are just the easiest to read.
 
 ### It's Still Just A Guideline
 Once you get used to following recipes with Food.js, you can feel free to drift away from the values and experiment with replacing ingredients with alternatives. Perhaps an experience you've never had: the balance and proportions will remain the same.
