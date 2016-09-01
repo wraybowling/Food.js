@@ -146,7 +146,7 @@
 	<span id="recipeName"></span>
 </h1>
 <div id="content"></div>
-	
+
 <script>
 var content_el = document.getElementById('content');
 var recipeName_el = document.getElementById('recipeName');
@@ -162,7 +162,7 @@ function renderMenu(){
 }
 
 var elementList = [];
-	
+
 function update(changed){
 	var scalar = changed.value / changed.dataset.original;
 	for(i=0; i<elementList.length; i++){
@@ -176,16 +176,16 @@ function update(changed){
 		}
 	}
 }
-	
+
 function renderRecipe(recipe){
 	location.hash = recipe;
 	recipe = unescape(recipe);
-	
+
 	if(recipes[recipe] === undefined){
 		renderMenu();
 		return;
 	}
-	
+
 	recipeName_el.innerHTML = recipe;
 
 	// make UI for each ingredient
@@ -204,7 +204,7 @@ function renderRecipe(recipe){
 	content_el.innerHTML = ui.join('');
 
 	// bind event handlers
-	
+
 	elementList = document.querySelectorAll('input');
 	for(i=0; i<elementList.length; i++){
 		elementList[i].oninput = function(){
@@ -213,11 +213,16 @@ function renderRecipe(recipe){
 	}
 }
 
-if(location.hash === undefined){
-	renderMenu();
-}else{
-	renderRecipe(unescape(location.hash.replace('#','')));
+function renderPage(){
+	if(location.hash === undefined){
+		renderMenu();
+	}else{
+		renderRecipe(unescape(location.hash.replace('#','')));
+	}
 }
+renderPage();
+
+window.addEventListener('hashchange', renderPage);
 
 </script>
 
