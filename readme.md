@@ -1,25 +1,42 @@
 ![Image Food.js](food.js.png)
 
 # Food.js
-## raw cooking data, and tools to read it
+raw cooking data, and tools to read it
 
-http://wraybowling.github.io/Food.js/
+Start here: http://wraybowling.github.io/Food.js/
 
 ## How It Works
 
-### Example Scenario 1: You want to use up a big ingredient
+### Example Scenario 1: You want to use up ingredient X
 
  1. Put X on a food scale
  2. Adjust the amount in the recipe
  5. All other values are updated!
 
-### Example Scenario 2: You want to make a recipe for Y people
+### Example Scenario 2: You want to serve Y people
 
- 1. Think about how much you want to serve per person
-  - Multiply Y✕500. 500 grams is a typical amount for a plate of food. 250 for half a plate, etc...
-  - To measure a glass's volume, put it on the scale, press tare, and fill it with water. Then multiply by Y.
+ 1. Think about how much you want to serve per person (Z)
+  - 500 grams is a typical amount for a plate of food
+  - 250 for half a plate
+  - and so on...
+ 2. Multiply by Y number of people.
  2. Put that value in the Total field
  5. All other values are updated!
+
+### Example Scenario 3: You want to make a perfect cocktail
+
+ 1. Write a piece of software to balance proportions (Food.js)
+ 2. Create a JavaScript object with
+  - all the ingredients as attributes
+  - all the values as proportions
+ 3. Measure the volume of the glass
+  - put it on the scale
+  - press tare
+  - fill with water
+ 4. Put the glass's volume in the Total field
+ 5. All other values are updated!
+
+<iframe src="https://vine.co/v/eZaqYpDBW1j/embed/simple" width="300" height="300" frameborder="0"></iframe>
 
 ## Philosophies
 
