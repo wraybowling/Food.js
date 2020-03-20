@@ -65,8 +65,9 @@ There are two ways you can convert your recipe to grams.
 - and so on...
 
 ### Enter ingredient amounts as arbitrary units into Wolfram Alpha.
-Search [1 lb of brussel sprouts](https://www.wolframalpha.com/input/?i=1+lb+of+brussel+sprouts)
-observe the serving size in the generated nutritional information card (454g), and write this down
+For example, search [1 lb of brussel sprouts](https://www.wolframalpha.com/input/?i=1+lb+of+brussel+sprouts)
+observe the serving size in the generated nutritional information card (454g), and write this down.
+
 ![1 lb of brussel sprouts](https://www4d.wolframalpha.com/Calculate/MSP/MSP4770223gdegd70cg388500002eaae38h4ff0g954?MSPStoreType=image/gif&s=31)
 
 Enjoy your meals,
