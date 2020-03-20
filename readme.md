@@ -28,15 +28,13 @@ Start here: http://wraybowling.github.io/Food.js/
  1. Write a piece of software to balance proportions (Food.js)
  2. Create a JavaScript object with
   - all the ingredients as attributes
-  - all the values as proportions
+  - all the values as mass
  3. Measure the volume of the glass
   - put it on the scale
   - press tare
   - fill with water
  4. Put the glass's volume in the Total field
  5. All other values are updated!
-
-<iframe src="embed/simple" width="300" height="300" frameborder="0"></iframe>
 
 ## Philosophies
 
@@ -57,7 +55,19 @@ Food.js is written in JavaScript, and is open source. The reader and the recipes
 
 Fork this repository to add your own recipes. Please feel free to send in your recipes as pull requests, and do not be surprised when they are forked and adjusted. That is actually the most delightful thing about cookbooks—how they mutate. What better way to facilitate such a thing than through Github?
 
+## Recipe Conversion Process
+There are two ways you can convert your recipe to grams.
 
+### Make your recipe using normal means, measuring in grams with a food scale with each step.
+- set bowl on scale, press tare
+- deposit first pre-measured ingredient, write down the value, press tare
+- deposite second pre-measured ingredient, write down the value, press tare
+- and so on...
+
+### Enter ingredient amounts as arbitrary units into Wolfram Alpha.
+Search [1 lb of brussel sprouts](https://www.wolframalpha.com/input/?i=1+lb+of+brussel+sprouts)
+observe the serving size in the generated nutritional information card (454g), and write this down
+![https://www4d.wolframalpha.com/Calculate/MSP/MSP4770223gdegd70cg388500002eaae38h4ff0g954?MSPStoreType=image/gif&s=31]
 
 Enjoy your meals,
 
