@@ -184,6 +184,7 @@ var content_el = document.getElementById('content');
 var recipeName_el = document.getElementById('recipeName');
 function renderMenu(){
 	recipeName_el.innerHTML = '';
+	document.title = 'Food.js';
 	location.hash = '';
 	var ui = ['<ul>'];
 	for(key in recipes){
@@ -219,6 +220,7 @@ function renderRecipe(recipe){
 	}
 
 	recipeName_el.innerHTML = recipe;
+	document.title = `${recipe} - Food.js`;
 
 	// make UI for each ingredient
 	var ui = [];
