@@ -197,6 +197,9 @@
 var content_el = document.getElementById('content');
 var recipeName_el = document.getElementById('recipeName');
 function renderMenu(){
+	if(location.hash === ''){
+		javascript:window.location.reload();
+	}
 	recipeName_el.innerHTML = '';
 	document.title = 'Food.js';
 	location.hash = '';
@@ -204,7 +207,7 @@ function renderMenu(){
 	for(key in recipes){
 		ui.push('<li><a href="javascript:renderRecipe(\''+escape(key.replace('\'','\\\''))+'\')">'+key+'</a></li>');
 	}
-	ui.push('</ul>')
+	ui.push('</ul>');
 	content_el.innerHTML = ui.join('');
 }
 
